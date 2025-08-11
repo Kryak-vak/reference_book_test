@@ -1,0 +1,42 @@
+[project]
+name = "reference-book"
+version = "0.1.0"
+description = "Reference book api test project"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "alembic>=1.16.2",
+    "asyncpg>=0.30.0",
+    "fastapi>=0.115.14",
+    "psycopg[binary]>=3.2.9",
+    "pydantic>=2.11.7",
+    "pydantic-settings>=2.10.1",
+    "python-dotenv>=1.1.1",
+    "sqlalchemy>=2.0.41",
+    "uvicorn[standard]>=0.34.3",
+]
+
+[dependency-groups]
+dev = [
+    "black>=25.1.0",
+    "mypy>=1.16.1",
+    "pytest>=8.4.1",
+    "pytest-asyncio>=1.0.0",
+    "ruff>=0.12.1",
+    "sqlalchemy[mypy]>=2.0.41",
+]
+
+[tool.ruff]
+line-length = 100
+fix = true
+
+[tool.black]
+line-length = 100
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+plugins = ["sqlalchemy.ext.mypy.plugin"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
